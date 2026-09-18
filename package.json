@@ -1,0 +1,19 @@
+{
+  "name": "bdd-test-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --config cucumber.json",
+    "report": "node scripts/generate-report.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@cucumber/cucumber": "^13.2.1",
+    "multiple-cucumber-html-reporter": "^4.3.0",
+    "playwright": "^1.63.0"
+  }
+}
