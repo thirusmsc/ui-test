@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    parameters {
+       
+        choice(name: 'BROWSER', choices: ['chromium', 'firefox', 'webkit'], description: 'Which browser engine to run the UI tests against')
+        booleanParam(name: 'HEADLESS', defaultValue: true, description: 'Run headless (uncheck to debug with a visible browser on the Jenkins agent)')
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -9,12 +14,12 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh 'npm ci'
-                sh 'npx playwright install --with-deps chromium'
+                sh "npx playwright install --with-deps ${params.BROWSER}"
             }
         }
         stage('Run Cucumber tests') {
             steps {
-                sh 'npx cucumber-js --config cucumber.json || true'
+                sh "BROWSER=${params.BROWSER} HEADLESS=${params.HEADLESS} npx cucumber-js --config cucumber.json || true"
             }
         }
         stage('Generate report') {

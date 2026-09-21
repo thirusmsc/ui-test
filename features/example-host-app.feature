@@ -1,4 +1,3 @@
-
 Feature: Host App basic checks
   As a developer
   I want to verify the Host App loads correctly

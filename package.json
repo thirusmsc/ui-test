@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js --config cucumber.json",
+    "test:chromium": "cross-env BROWSER=chromium cucumber-js --config cucumber.json",
+    "test:firefox": "cross-env BROWSER=firefox cucumber-js --config cucumber.json",
+    "test:webkit": "cross-env BROWSER=webkit cucumber-js --config cucumber.json",
     "report": "node scripts/generate-report.mjs"
   },
   "keywords": [],
@@ -13,6 +16,7 @@
   "type": "commonjs",
   "dependencies": {
     "@cucumber/cucumber": "^13.2.1",
+    "cross-env": "^7.0.3",
     "multiple-cucumber-html-reporter": "^4.3.0",
     "playwright": "^1.63.0"
   }
