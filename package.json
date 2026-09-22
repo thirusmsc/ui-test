@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js --config cucumber.json",
-    "test:chromium": "cross-env BROWSER=chromium cucumber-js --config cucumber.json",
-    "test:firefox": "cross-env BROWSER=firefox cucumber-js --config cucumber.json",
-    "test:webkit": "cross-env BROWSER=webkit cucumber-js --config cucumber.json",
+    "test": "node scripts/run-tests.mjs",
+    "test:chromium": "cross-env BROWSER=chromium node scripts/run-tests.mjs",
+    "test:firefox": "cross-env BROWSER=firefox node scripts/run-tests.mjs",
+    "test:webkit": "cross-env BROWSER=webkit node scripts/run-tests.mjs",
     "report": "node scripts/generate-report.mjs"
   },
   "keywords": [],

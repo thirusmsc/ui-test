@@ -1,9 +1,9 @@
 pipeline {
     agent any
     parameters {
-       
         choice(name: 'BROWSER', choices: ['chromium', 'firefox', 'webkit'], description: 'Which browser engine to run the UI tests against')
         booleanParam(name: 'HEADLESS', defaultValue: true, description: 'Run headless (uncheck to debug with a visible browser on the Jenkins agent)')
+        string(name: 'PARALLEL', defaultValue: '2', description: 'How many scenarios to run at the same time (each gets its own isolated browser)')
     }
     stages {
         stage('Checkout') {
@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run Cucumber tests') {
             steps {
-                sh "BROWSER=${params.BROWSER} HEADLESS=${params.HEADLESS} npx cucumber-js --config cucumber.json || true"
+                sh "BROWSER=${params.BROWSER} HEADLESS=${params.HEADLESS} PARALLEL=${params.PARALLEL} npm test || true"
             }
         }
         stage('Generate report') {

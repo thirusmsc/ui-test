@@ -3,7 +3,6 @@
     "paths": ["features/**/*.feature"],
     "require": ["step-definitions/**/*.js", "features/support/**/*.js"],
     "format": ["json:reports/cucumber-report.json", "progress-bar"],
-    "publishQuiet": true,
-    "parallel": 2
+    "publishQuiet": true
   }
 }
